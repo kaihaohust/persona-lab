@@ -27,8 +27,22 @@ See [the asset map](public/workshop/ASSETS.md). No participant uploads or
 image generation are required. The paper prototype is a design reference,
 not a finished website. There is no separate application mock.
 
+## GitHub Pages deployment
+
+After this setup is merged into `main`, the paper mock will be published at
+[https://kaihaohust.github.io/persona-lab/](https://kaihaohust.github.io/persona-lab/).
+Every push to `main` runs the GitHub Pages workflow: `npm ci`, `npm test`,
+`npm run build`, then deployment of `dist/`. Pull requests run the same tests
+and build without deploying. Deployment status is available in the repository's
+Actions tab; Pages uses **GitHub Actions** as its publishing source.
+
+Production assets use the `/persona-lab/` base path. To check the production
+build locally, run `npm ci`, `npm run build`, then
+`npx vite preview --host 0.0.0.0 --port 3003 --strictPort` and open
+`http://localhost:3003/persona-lab/` (use an available port in 3000–3999 on the
+workshop VM). The development preview still opens at `/`.
+
 ## Exercise boundaries
 
 - This app has no real browser or model integration.
 - The sample journey and rationale are simulated; they are not human research.
-- GitHub Pages deployment is intentionally not configured. Creating it is a participant task.
